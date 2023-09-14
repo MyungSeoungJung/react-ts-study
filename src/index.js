@@ -1,15 +1,23 @@
-//ecmascript(es,js) module
+// ecmascript(es, js) module
 
-import module, { appName, greet } from "./module.js";
+// const person  = {username:"Alice", age: 30}
+// const {username, age }  = {username:"Alice", age: 30}
+// username, age
+
+import { appName, greet, user } from "./module.js";
+// 디폴트 모듈
 // 자동완성으로 파일명하고 모듈명을 동일하게 해줌
-
-// import module from "./module"; 디폴트는 import를 쳐서 삽입해줘야함
+// import module from "./module";
 import metadata from "./module.js";
 
-const name = "JavaScrpit";
+const name = "Javascript!!";
+
 console.log(
   greet(`${name}-${appName}
   -${metadata.version}-${metadata.creator}
- 
-  `)
+  -${user.name}-${user.age}`)
 );
+
+document.getElementById("root").innerHTML = greet(`${name}-${appName}
+-${metadata.version}-${metadata.creator}
+-${user.name}-${user.age}`);
