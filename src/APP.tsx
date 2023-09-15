@@ -12,8 +12,17 @@
 // JSX Element를 반환하는 함수
 import react_icon from "./assets/reaect-icon.png";
 import intro from "./assets/intro.mp4";
+import WelcomeMessage from "./components/WelcomMessage";
+import Button from "./components/Button";
 
 const App = () => {
+  const handleClickPrimaryButton = () => {
+    alert("click me!");
+  };
+  const handleClicksecondaryButton = () => {
+    alert("cancel");
+  };
+
   // React.createElement(component, props, ...children)
   // React.createElement("div", null, "Hello, React!!")
   return (
@@ -25,6 +34,22 @@ const App = () => {
           <source src={intro} type="video/mp4" />
         </video>
       </div>
+      <WelcomeMessage name={"React Typescript"} />
+
+      {/* props-down, event-up */}
+      {/* 부모-자식 컴포넌트간 데이터 교환방법 */}
+      {/* primary면 이 색상 */}
+      <Button
+        label="Click me!"
+        color="primary"
+        onClick={handleClickPrimaryButton}
+      />
+      {/* secondary면 이 색상 */}
+      <Button
+        label="Cancel"
+        color="secondary"
+        onClick={handleClicksecondaryButton}
+      />
     </div>
   );
 };
