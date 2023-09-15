@@ -10,12 +10,18 @@ import { appName, greet, user } from "./module";
 // import module from "./module";
 import metadata from "./module";
 
-const name = "Javascript!!";
+//  타입 추론
+// let name = "Javascript!!";
+
+// 타입 선언
+let name : string
+// name = 1;
+name = "JavaScript";
 
 console.log(
   greet(`${name}-${appName}
   -${metadata.version}-${metadata.creator}
-  -${user.name}-${user.age}`)
+  -${user.name}-${user.age}`,"male")
 );
 
 document.getElementById("root").innerHTML = greet(`${name}-${appName}
