@@ -10,10 +10,23 @@
 
 // 리액트는 컴포넌트 함수
 // JSX Element를 반환하는 함수
+import react_icon from "./assets/reaect-icon.png";
+import intro from "./assets/intro.mp4";
+
 const App = () => {
   // React.createElement(component, props, ...children)
   // React.createElement("div", null, "Hello, React!!")
-  return <div> Hello, React!!</div>;
+  return (
+    <div>
+      <img src={react_icon} alt="react icon" height={16} />
+      <span>Hello, React!!</span>
+      <div>
+        <video width={480} height={270} controls loop autoPlay muted>
+          <source src={intro} type="video/mp4" />
+        </video>
+      </div>
+    </div>
+  );
 };
 
 export default App;
