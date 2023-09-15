@@ -5,10 +5,19 @@
       // 모듈방식(es, export/import)
       "module": "ESNext",
       // ts를 js로 컴파일한 후 결과 버전
+      // **esbuild-loader 쓸 때는 영향을 안 받음
       "target": "ES2020",
       // ts에서 사용할 기본 js 라이브러리
       "lib": ["ESNext", "DOM"],
       // ts에서 js코드를 쓸 수 있는 여부
-      "allowJs": true
+      "allowJs": true,
+      // jsx라고 문법을 처리하는 방법(js로 변환했을때)
+      // javascript virturl DOM 객체를 HTML처럼 표기하는 방법
+      // **esbuild-loader 쓸 때는 영향을 안 받음
+
+      // jsx-transfile : React import를 안해도 되게 하는 방법
+      // 어디까지 작성하는 컴포넌트 코드에 대한 얘기고
+      // 어디선가 글로벌 수준에 React improt를 해야함.
+      "jsx" : "preserve"
     }
   }
