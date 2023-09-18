@@ -1,5 +1,7 @@
 import Counter from "./components/Couter";
+import Layout from "./components/LayOut";
 import Todo from "./components/Todo";
+import WelcomeMessage from "./components/WelcomMessage";
 
 const App = () => {
   return (
@@ -7,6 +9,12 @@ const App = () => {
       <Counter />
       <hr />
       <Todo />
+      <hr />
+      <Layout title="Alice">
+        {/* childern 속성을 안쪽 태그에 */}
+        <WelcomeMessage name="Alice" />
+        <p> Welcome to out website</p>
+      </Layout>
     </>
   );
 };
