@@ -55,7 +55,10 @@ const Counter = () => {
     <>
       {/* 조건부 렌더링 */}
       {showAlert && (
-        <Alert message="증가되었습니다" onClose={haddleAlertClosed} />
+        <Alert
+          message={`증가되었습니다. 현재값: ${count} `}
+          onClose={haddleAlertClosed}
+        />
       )}
       <div>
         <p>현재 카운트 : {count}</p>
