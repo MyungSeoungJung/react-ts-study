@@ -26,4 +26,13 @@ const Alert = ({ message, onClose }: AlertProps) => {
   );
 };
 
+// memo(컴포넌트)
+// 컴포넌트를 메모이제이션
+// 컴포넌트의 속성값이 바뀌지않으면, diff나 렌더링을 수행하지않겠다.
+// 메모이제이션을 해야되는 조건을 별도로 줄 수있음
+// export default memo(
+//   Alert,
+//   (prevprops, nextProps) => prevprops.message === nextProps.message
+// );
+
 export default Alert;
