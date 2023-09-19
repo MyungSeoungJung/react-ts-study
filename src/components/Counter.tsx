@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import Alert from "./Alert";
 
 //  1. props와 state 둘 다 렌더링 결과물에 영향을 주는 변수
-//  2. props는 함수 매개변수 처럼 컴포넌트에 전달
+//  2. props는 함수 매개변수처럼 컴포넌트에 전달
 //  3. state는 함수 내에 선언된 변수(변수 변경함수가 존재)
 const Counter = () => {
   // const [상태변수, 상태변경함수] = useState<상태타입> (초깃값)
@@ -43,7 +43,7 @@ const Counter = () => {
     if (showAlert) {
       setShowAlert(false);
     }
-  }, [showAlert]);
+  }, [showAlert]); // 의존성 배열 = 배열에 나열된 값중 하나라도 변경되면 useEffect 안의 코드 블록이 실행
 
   // 상태값 변경이나 컴포넌트 라이프사이클 변동에 따른 처리
   useEffect(() => {
@@ -66,7 +66,7 @@ const Counter = () => {
       )}
       <div>
         <p>현재 카운트 : {count}</p>
-        {/* 변경된 값이 내보내지는 App.tsx로 return되는 거임 */}
+        {/* 변경된 값이 App.tsx로 내보내짐(return)*/}
         <button onClick={handleIncrement}>증가</button>
       </div>
     </>
