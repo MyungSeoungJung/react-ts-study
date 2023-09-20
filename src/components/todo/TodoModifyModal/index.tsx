@@ -1,4 +1,5 @@
 import { MutableRefObject, useRef } from "react";
+import { ButtonContainer, Container, Wrapper } from "./styles";
 
 interface TodoModifyModalProps {
   index: number;
@@ -20,25 +21,15 @@ const TodoModifyModal = ({
   };
 
   return (
-    <div
-      style={{
-        width: "100%",
-        height: "100vh",
-        position: "fixed",
-        top: 0,
-        left: 0,
-        zIndex: 9990,
-        backgroundColor: "rgba(0, 0, 0, 0.7)",
-      }}
-    >
-      <div style={{ width: "300px", padding: 20, backgroundColor: "white" }}>
+    <Wrapper>
+      <Container>
         <input defaultValue={memo} ref={inputRef}></input>
-        <div style={{ display: "flex", justifyContent: "flex-end", gap: 20 }}>
+        <ButtonContainer>
           <button onClick={handleConfirm}>수정</button>
           <button onClick={onCancel}>취소</button>
-        </div>
-      </div>
-    </div>
+        </ButtonContainer>
+      </Container>
+    </Wrapper>
   );
 };
 

@@ -1,11 +1,26 @@
-import Post from "./components/PostPractice/Post";
+import { useState } from "react";
+import Todo from "./components/todo/Todo";
+import ResetStyle from "./styles/reset";
 
 const App = () => {
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+
+  const handleChagneTheme = () => {
+    if (theme === "light") {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
+  };
+
   return (
-    <>
-      <h1>게시판</h1>
-      <Post />
-    </>
+    <div id="app-theme" className={theme}>
+      {/* 글로벌 스타일을 가장 첫부분에 넣어야함 */}
+      <ResetStyle />
+      <button onClick={handleChagneTheme}>{theme}</button>
+      <Todo />
+    </div>
   );
 };
+
 export default App;
