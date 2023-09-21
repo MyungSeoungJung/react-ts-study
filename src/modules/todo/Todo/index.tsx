@@ -1,9 +1,4 @@
-import {
-  MutableRefObject,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { MutableRefObject, useEffect, useRef, useState } from "react";
 // 모듈 가져오기
 // 1차시도: ../TodoModifyModal.ts/tsx/js/jsx
 // 2차시도: ../TodoModifyModal/index.ts/tsx/js/jsx
@@ -16,11 +11,8 @@ interface TodoItem {
 
 const Todo = () => {
   // 할일목록 상태(string[])
-  const [todoList, setTodoList] = useState<
-    TodoItem[]
-  >([]);
-  const [showModifyModal, setShowModifyModal] =
-    useState(false);
+  const [todoList, setTodoList] = useState<TodoItem[]>([]);
+  const [showModifyModal, setShowModifyModal] = useState(false);
   const [modifyItem, setModifyItem] = useState({
     index: 0,
     memo: "",
@@ -28,8 +20,7 @@ const Todo = () => {
   // 입력박스 참조
   // useRef() 참조변수 생성, 기본이 null
   // as MutableRefObject<참조할 변수의 타입>
-  const inputRef =
-    useRef() as MutableRefObject<HTMLInputElement>;
+  const inputRef = useRef() as MutableRefObject<HTMLInputElement>;
 
   // 배열에 추가할 때는
   // 새로운 배열 생성, 기존 배열 나열, 신규 요소 넣음
@@ -53,26 +44,19 @@ const Todo = () => {
     // [...arr]: arr 배열요소를 나열해서 새로운 배열 생성
 
     // filter, map.. 이런형태의 새로운 배열을 반환하는 함수
-    setTodoList([
-      { memo: input.value },
-      ...todoList,
-    ]);
+    setTodoList([{ memo: input.value }, ...todoList]);
     input.value = "";
   };
 
   // 해당 조건에 맞는 요소만 제외된 배열을 만듦
   // filter
   const handleRemove = (index: number) => {
-    setTodoList(
-      todoList.filter((_, idx) => idx !== index)
-    );
+    setTodoList(todoList.filter((_, idx) => idx !== index));
     // setTodoList(todoList.filter((item, idx) => item.id !== id));
   };
 
   // 모달창을 열고 선택한 항목의 데이터를 모달로 넘겨주는 역할
-  const handleOpenModifyModal = (
-    index: number
-  ) => {
+  const handleOpenModifyModal = (index: number) => {
     // 모달 열기
     setShowModifyModal(true);
     // 선택한 데이터 넘겨주기
@@ -118,15 +102,10 @@ const Todo = () => {
     <TodoContainer>
       {/* ref 속성에 참조변수 */}
       <header>
-        <input
-          placeholder="..할일"
-          ref={inputRef}
-        ></input>
+        <input placeholder="..할일" ref={inputRef}></input>
         <button onClick={handleAdd}>추가</button>
       </header>
-      {todoList.length === 0 && (
-        <p>할 일 목록이 없습니다.</p>
-      )}
+      {todoList.length === 0 && <p>할 일 목록이 없습니다.</p>}
       {todoList.length > 0 && (
         <>
           <ul>
@@ -160,8 +139,7 @@ const Todo = () => {
             ))}
           </ul>
           <footer>
-            <data>{todoList.length}</data> 개의
-            할일
+            <data>{todoList.length}</data> 개의 할일
           </footer>
         </>
       )}

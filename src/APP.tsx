@@ -43,7 +43,9 @@ const App = () => {
           {/* index: 해당경로의 기본 화면 */}
           <Route element={<Home />} index />
           {/* 기능 모듈 */}
+          {/* path를(경로) 정의-------------------------- */}
           <Route path="todo" element={<Todo />} index />
+
           {/* /contacts */}
           <Route path="contacts" element={<ContactSidebar />}>
             {/* /contacts */}

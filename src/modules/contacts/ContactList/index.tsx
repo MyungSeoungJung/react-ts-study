@@ -17,7 +17,7 @@ const ContactList = () => {
   const navigate = useNavigate(); //이동
 
   const handleClickItem = (id: number) => {
-    navigate(`/contacts/detail/${id}`); // URL이동
+    navigate(`/contacts/detail/${id}`); // li id값에 URL이동
   };
 
   return (
