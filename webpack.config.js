@@ -7,9 +7,13 @@ const { ProvidePlugin } = require("webpack");
 module.exports = {
   // 시작지점의 코드(여기서부터 번들링이 시작)
   entry: "./src/index.tsx",
-  // entry부터 시작해서 확장자가 ts/js 인 파일들을 번들링하겠다.
   resolve: {
+    // entry부터 시작해서 확장자가 ts/js 인 파일들을 번들링하겠다.
     extensions: [".tsx", ".ts", ".js"],
+    // 경로에 대한 alias(별칭) 설정
+    alias: {
+      "@": __dirname + "/src",
+    },
   },
   // 모듈 해석기
   module: {
@@ -26,7 +30,6 @@ module.exports = {
         type: "asset/resource",
       },
     ],
-
     // rules: [
     //   {
     //     test: /\.tsx?$/, // .ts 파일에 대해서
@@ -37,10 +40,14 @@ module.exports = {
   },
   // 번들링이 완료된 결과물에 대한 설정
   output: {
-    filename: "js/[name]-[chunkhash].js", // 번들 파일에 해시 추가
-    assetModuleFilename: "asset/[hash][ext][query]", //이미지/동영상 같은 정적 파일들의 위치와 파일형식
-    path: __dirname + "/dist", // 결과물들의 위치
-    clean: true, // 기존 빌드 결과물 삭제
+    // 번들 파일에 해시추가
+    filename: "js/[name]-[chunkhash].js",
+    // 이미지/동영상같은 정적파일들의 위치와 파일형식
+    assetModuleFilename: "asset/[hash][ext][query]",
+    // 결과물들의 위치
+    path: __dirname + "/dist",
+    // 기존 빌드 결과물 삭제
+    clean: true,
   },
   plugins: [
     // 번들된 파일을 삽입할 마크업 파일을 설정
@@ -58,7 +65,8 @@ module.exports = {
   // 램(ram)에 파일디렉터리 형태로 구조를 만들어서 저장
   // 램디스크처럼 ./dist/index.html, ./dist/bundle.js
   devServer: {
+    historyApiFallback: true,
     static: "./dist",
-    open: true, //npm start 하면 자동으로 창 띄워줌
+    open: true,
   },
 };

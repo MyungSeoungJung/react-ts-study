@@ -1,6 +1,6 @@
 import Counter from "./components/Counter";
 import Layout from "./components/Layout";
-import Todo from "./components/todo/Todo";
+import Todo from "./modules/todo/Todo";
 import WelcomeMessage from "./components/WelcomMessage";
 
 const App = () => {
