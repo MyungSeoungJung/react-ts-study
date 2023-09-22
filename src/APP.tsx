@@ -5,10 +5,12 @@ import Home from "./pages/Home";
 import Layout from "./Layout";
 import { Suspense, lazy } from "react";
 
+// lazy는 요청이 들어올때 로딩
 const ContactSidebar = lazy(() => import("./modules/contacts/ContactSidebar"));
 const ContactList = lazy(() => import("./modules/contacts/ContactList"));
 const ContactDetail = lazy(() => import("./modules/contacts/ContactDetail"));
 const ContactForm = lazy(() => import("./modules/contacts/ContactForm"));
+const ProfileEdit = lazy(() => import("./modules/profile/ProfilesEdit"));
 
 // Lazy-loading 기법
 // 동적인 import 방식 + lazy
@@ -43,6 +45,9 @@ const App = () => {
           {/* index: 해당경로의 기본 화면 */}
           <Route element={<Home />} index />
           {/* 기능 모듈 */}
+
+          <Route path="/profile/edit" element={<ProfileEdit />} />
+
           {/* path를(경로) 정의-------------------------- */}
           <Route path="todo" element={<Todo />} index />
 
