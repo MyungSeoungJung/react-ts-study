@@ -25,6 +25,14 @@ export function useProfileData() {
         email: "alice@gmail.com",
       },
     });
+  // useSwr<타입>(키,{ fallback: { 벨류(옵션) } })
 
   return { ProfileData, mutateProfileData };
+  // 주석 제거
+  //   const { data: ProfileData, mutate: mutateProfileData } = useSWR<ProfileData>("@data/profile", {
+  //     fallbackData: {
+  //         nickname: "Alice",
+  //         email: "alice@gmail.com",
+  //     },
+  // });
 }
