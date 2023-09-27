@@ -18,8 +18,9 @@ const ContactSidebar = () => {
         </ul>
       </aside>
       <section>
-        {/* 지연시간동안 내용물 보여주는 태그 */}
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense
+          fallback={<div>Loading...</div>}
+        >
           <Outlet />
         </Suspense>
       </section>

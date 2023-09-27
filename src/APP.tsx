@@ -4,13 +4,16 @@ import Home from "./pages/Home";
 // import Todo from "./modules/todo/Todo";
 import Layout from "./Layout";
 import { Suspense, lazy } from "react";
+import PostList from "./modules/post/PostList";
+import PostPractice from "./Practice/PostPractice";
+import PostpracticeFrom from "./Practice/PostPractice/PostPractice/PostPracticeForm";
+import PostpracticeList from "./Practice/PostPractice/PostPractice/PostPracticeList";
+import OrderNotification from "./modules/order/OrderNotification/OrderNotification";
 
-// lazy는 요청이 들어올때 로딩
 const ContactSidebar = lazy(() => import("./modules/contacts/ContactSidebar"));
 const ContactList = lazy(() => import("./modules/contacts/ContactList"));
 const ContactDetail = lazy(() => import("./modules/contacts/ContactDetail"));
 const ContactForm = lazy(() => import("./modules/contacts/ContactForm"));
-const ProfileEdit = lazy(() => import("./modules/profile/ProfilesEdit"));
 
 // Lazy-loading 기법
 // 동적인 import 방식 + lazy
@@ -31,6 +34,8 @@ const Todo = lazy(() => {
   );
 });
 
+const ProfileEdit = lazy(() => import("@/modules/profile/ProfilesEdit"));
+
 const App = () => {
   // 라우팅 처리하는 곳의 가장 최상위에 BrowserRouter 감싸줘야함
   return (
@@ -39,18 +44,17 @@ const App = () => {
     // 경로에 맞는 컴포넌트를 스크립트로 로딩
     <BrowserRouter>
       {/* 컴포넌트를 동적으로 로딩할 때 지연시간동안 보여주는 요소  */}
+      <OrderNotification />
       <Routes>
         <Route path="/" element={<Layout />}>
           {/* 컨텐츠 페이지*/}
           {/* index: 해당경로의 기본 화면 */}
           <Route element={<Home />} index />
           {/* 기능 모듈 */}
+          <Route path="posts" element={<PostList />} />
+          <Route path="profile/edit" element={<ProfileEdit />} />
 
-          <Route path="/profile/edit" element={<ProfileEdit />} />
-
-          {/* path를(경로) 정의-------------------------- */}
           <Route path="todo" element={<Todo />} index />
-
           {/* /contacts */}
           <Route path="contacts" element={<ContactSidebar />}>
             {/* /contacts */}
@@ -59,6 +63,10 @@ const App = () => {
             <Route path="form" element={<ContactForm />} />
             {/* /contacts/detail/:id */}
             <Route path="detail/:id" element={<ContactDetail />} />
+          </Route>
+          <Route path="postPractice" element={<PostPractice />}>
+            <Route path="postPracticeForm" element={<PostpracticeFrom />} />
+            <Route path="postPracticeList" element={<PostpracticeList />} />
           </Route>
         </Route>
       </Routes>

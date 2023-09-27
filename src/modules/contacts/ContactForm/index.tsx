@@ -7,10 +7,7 @@ const ContactForm = () => {
   const navigate = useNavigate();
   const nameRef = useRef() as MutableRefObject<HTMLInputElement>;
   const phoneRef = useRef() as MutableRefObject<HTMLInputElement>;
-  // useContactsData()를 호출해서
-  // data.ts에 있는 useContactsData에 있는 로직을 { contactsData, createContactData }이렇게 구조분해할당
-  // contactsData 기존에 있는 값 불러오고
-  // createContactData = 변경 데이터를 저장하는 함수
+
   const { contactsData, createContactData } = useContactsData(0);
 
   const handleSave = () => {
