@@ -48,7 +48,19 @@ const PostList = () => {
   const contentRef = useRef<HTMLTextAreaElement>();
   const formRef = useRef<HTMLFormElement>();
 
-  useEffect(() => {}, []);
+  // Post get
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await http.get<PostItem[]>("/posts"); // 수정: GET 요청으로 변경하고 데이터를 가져오기
+        setPosts(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const handlePost = (e: React.FormEvent) => {
     // 이걸 안하면 현제 페이지에 폼데이터 전송
@@ -66,7 +78,6 @@ const PostList = () => {
 
     (async () => {
       const response = await http.post<PostItem>("/posts/with-file", formData);
-
       console.log(response);
       if (response.status === 201) {
         formRef.current.reset();
